@@ -25,9 +25,12 @@ import java.util.Map;
 @RestController
 public class RecipeController {
 
-    @Autowired
     RecipeService recipeService;
 
+    @Autowired
+    public RecipeController(RecipeService recipeService) {
+        this.recipeService = recipeService;
+    }
 
     @PostMapping("/api/recipe/new")
     public Map saveRecipe(@Valid @RequestBody Recipe recipe,

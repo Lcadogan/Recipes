@@ -16,10 +16,14 @@ import javax.validation.Valid;
 @RestController
 public class UserController {
 
-    @Autowired
     UserService userService;
-    @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @PostMapping("/api/register")
     public ResponseEntity<?> userRegistration(@Valid @RequestBody User user) {
